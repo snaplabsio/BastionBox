@@ -3,6 +3,18 @@
 project_root=$(dirname $(realpath $0 ))
 echo $project_root
 
+# get some variables
+echo "Choose a password for the web interface"
+read -s -p "Password: " PASSWORD; echo
+read -s -p "Confirm Password: " PASSCONFIRM; echo
+
+if [[ "$PASSWORD" != "$PASSCONFIRM" ]]; then
+ echo "Passwords do not match, exiting"
+ exit -1
+fi
+
+sed -i "s/\"password\":.*,/\"password\": \"$PASSWORD\",/" $project_root/API/config.json
+
 # install dependencies
 apt-get update
 apt-get install -y zip unzip python3-pip apache2 docker.io openvpn nodejs npm
@@ -42,6 +54,7 @@ mkdir $project_root/Data/VPNConfigs
 # create certs and configs for vpn
 cd $project_root/Resources/VPNSetup
 cp server.conf /etc/openvpn/server.conf
+mkdir /etc/openvpn/crl
 npm i --production
 npm run newvpn
 cd $project_root

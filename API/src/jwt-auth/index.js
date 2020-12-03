@@ -67,7 +67,7 @@ async function jwtLogin (req, res) {
   const { username, password } = req.body;
   console.log(req);
 
-  if (config.username !== username || config.password !== password) {
+  if (password === '' || config.username !== username || config.password !== password) {
     res.status(401);
     return res.json({ error: 'Invalid email or password' });
   }

@@ -11,6 +11,7 @@
   "author": "Barrett Adams",
   "license": "GPL-3.0-or-later",
   "dependencies": {
+    "axios": "^0.21.0",
     "ip-utils": "^2.4.0",
     "node-forge": "^0.10.0"
   },

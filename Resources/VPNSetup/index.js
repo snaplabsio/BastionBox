@@ -3,6 +3,7 @@ const pki = forge.pki;
 const fs = require('fs');
 const axios = require('axios');
 const ip = require('ip-utils');
+const os = require('os');
 
 const CAattrs = [
   { name: 'commonName', value: 'bastionboxCA' },
@@ -158,16 +159,14 @@ async function newVpnSetup () {
   fs.writeFileSync('/etc/openvpn/server.key', serverKey);
   fs.writeFileSync('/etc/openvpn/server.crt', serverCertPem);
 
-  // attempt to figure out vpn routes for AWS
+  let cidr;
+  // attempt to get VPC cidr for AWS
   axios.get('http://169.254.169.254/latest/meta-data/mac', { timeout: 500 })
     .then((response) => {
       const mac = response.data;
       axios.get(`http://169.254.169.254/latest/meta-data/network/interfaces/macs/${mac}/vpc-ipv4-cidr-block`, { timeout: 500 })
         .then((response) => {
-          const vpccidr = response.data;
-          const mask = ip.subnet(vpccidr).mask();
-          const start = ip.subnet(vpccidr).networkAddress();
-          fs.appendFileSync('/etc/openvpn/server.conf', `push "route ${start} ${mask}"\n`);
+          cidr = response.data;
         })
         .catch(() => {
           console.log('could not reach AWS metadata');
@@ -176,4 +175,24 @@ async function newVpnSetup () {
     .catch(() => {
       console.log('could not reach AWS metadata');
     });
+
+  // get subnet cidr from network interface
+  if (!cidr) {
+    const networkInterfaces = os.networkInterfaces();
+    if (networkInterfaces['eth0']) {
+      cidr = networkInterfaces['eth0'].find((ip) => ip.family === 'IPv4').cidr;
+    } else {
+      for (const niId in networkInterfaces) {
+        const v4addr = networkInterfaces[niId].find((ip) => ip.family === 'IPv4');
+        if (v4addr && !v4addr.internal) {
+          cidr = v4addr.cidr;
+          break;
+        }
+      }
+    }
+  }
+
+  const mask = ip.subnet(cidr).mask();
+  const start = ip.subnet(cidr).networkAddress();
+  fs.appendFileSync('/etc/openvpn/server.conf', `push "route ${start} ${mask}"\n`);
 }
