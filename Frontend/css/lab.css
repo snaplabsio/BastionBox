@@ -1,0 +1,203 @@
+﻿body {
+    background-color: #eee;
+    font-family: "Nunito", sans-serif;
+    height: auto;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 15px;
+}
+
+.form-signin .checkbox {
+    font-weight: normal;
+}
+
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin .upperField {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin .lowerField {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.form-signin .middleField {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.form-signin .onlyField {
+    margin-bottom: 10px;
+}
+
+#navShadow {
+    position: absolute;
+    width: 100%;
+    height: 56px;
+    box-shadow: hsl(0, 0%, 80%) 4px 6px 15px 0px;
+    z-index: -2;
+}
+
+.navbar {
+    overflow: hidden;
+    width: 100%;
+    z-index: 6;
+}
+
+#main {
+    padding: 16px;
+    overflow: auto;
+    height: auto;
+    z-index: 5;
+    position: relative;
+    height: 100%;
+}
+
+.main-wrapper {
+    height: calc(100% - 57px);
+}
+
+.menu-icon {
+    padding-right: 15px;
+}
+
+.tooltip-inner {
+    background-color: #555555 !important;
+}
+
+.bs-tooltip-top .arrow::before,
+.bs-tooltip-auto[x-placement^="top"] .arrow::before {
+    border-top-color: #555555 !important;
+}
+
+.bs-tooltip-right .arrow::before,
+.bs-tooltip-auto[x-placement^="right"] .arrow::before {
+    border-right-color: #555555 !important;
+}
+
+
+.bs-tooltip-bottom .arrow::before,
+.bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
+    border-bottom-color: #555555 !important;
+}
+
+
+.bs-tooltip-left .arrow::before,
+.bs-tooltip-auto[x-placement^="left"] .arrow::before {
+    border-left-color: #555555 !important;
+}
+
+/* fix jumping page when modal opens/closes */
+.modal-open[style] {
+    padding-right: 0px !important;
+}
+
+.terminal {
+    font-size: 1.7rem;
+    padding-left: 8px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    vertical-align: middle;
+    color: #007BFF;
+}
+
+.terminal:hover {
+    color: #0069D9;
+    cursor: pointer;
+}
+
+.table td {
+    padding: 0.5rem;
+}
+
+.edit-conn {
+    color: #ffc107;
+    font-size: 1.7rem;
+    padding-left: 8px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    vertical-align: middle;
+}
+.edit-conn:hover {
+    color: #E0A800
+}
+
+.vpn-download {
+    color: #007BFF;
+    font-size: 1.7rem;
+    padding-left: 8px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    vertical-align: middle;
+}
+
+.vpn-download:hover {
+    color: #0069D9;
+}
+
+.revoke {
+    color: #dc3545;
+    font-size: 1.7rem;
+    padding-left: 8px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    vertical-align: middle;
+}
+
+.revoke:hover {
+    color: #c82333;
+}
+
+.dashboard-tbody>tr>td {
+    vertical-align: middle;
+}
+
+.dashboard-tbody>tr {
+    height: 62px;
+}
+
+.title-refresh {
+    width: 100%;
+    justify-content: space-between;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 12px;
+    margin-top: 8px;
+}

@@ -1,0 +1,29 @@
+{
+  "name": "snaplabs-vpn-setup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx eslint index.js",
+    "newvpn": "node -e 'require(\".\").newVpnSetup()'"
+  },
+  "keywords": [],
+  "author": "Barrett Adams",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "ip-utils": "^2.4.0",
+    "node-forge": "^0.10.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.12.9",
+    "@babel/node": "^7.12.6",
+    "@babel/preset-env": "^7.12.7",
+    "eslint": "^7.14.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.1.0",
+    "nodemon": "^2.0.6"
+  }
+}
