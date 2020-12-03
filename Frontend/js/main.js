@@ -1,18 +1,18 @@
-const AdminBox = window.AdminBox || {};
+const BastionBox = window.BastionBox || {};
 
 $(document).ready(() => {
   if (!checkAuthenticated()) window.location.href = '/index.html';
 
-  AdminBox.token = localStorage.getItem('adminBoxAccessToken');
+  BastionBox.token = localStorage.getItem('bastionBoxAccessToken');
   $.ajaxSetup({
     beforeSend: (xhr) => {
       xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.setRequestHeader('Access-Token', AdminBox.token);
+      xhr.setRequestHeader('Access-Token', BastionBox.token);
     }
   });
 
-  AdminBox.VPNConfigs = [];
-  AdminBox.ConsoleConnections = [];
+  BastionBox.VPNConfigs = [];
+  BastionBox.ConsoleConnections = [];
   list();
 
   $('#logoutBtn').on('click', (event) => {
@@ -94,9 +94,9 @@ function createConsoleConnection () {
     '/api/createconnection', postData, (data) => {
       if (data.result === 'success') {
         if (conn.ID) {
-          AdminBox.ConsoleConnections = AdminBox.ConsoleConnections.map((c) => c.ID !== conn.ID ? c : data.conn);
+          BastionBox.ConsoleConnections = BastionBox.ConsoleConnections.map((c) => c.ID !== conn.ID ? c : data.conn);
         } else {
-          AdminBox.ConsoleConnections.push(data.conn);
+          BastionBox.ConsoleConnections.push(data.conn);
         }
         drawConnectionList();
       } else {
@@ -169,7 +169,7 @@ function logout () {
 }
 
 function checkAuthenticated () {
-  const token = localStorage.getItem('adminBoxAccessToken');
+  const token = localStorage.getItem('bastionBoxAccessToken');
   if (token) {
     try {
       const jwt = window.jwt_decode(token);
@@ -186,7 +186,7 @@ function checkAuthenticated () {
 
 function drawConfigList () {
   $('#vpnTableBody').empty();
-  AdminBox.VPNConfigs.forEach((config) => {
+  BastionBox.VPNConfigs.forEach((config) => {
     const filename = `${config.Name.replace(/[^a-z0-9_-]/gi, '_').toLowerCase()}.ovpn`;
 
     $('#vpnTableBody').append(`<tr><td>${window.htmlEncode(config.Name)}</td>
@@ -204,7 +204,7 @@ function drawConfigList () {
 
 function drawConnectionList () {
   $('#consoleTableBody').empty();
-  AdminBox.ConsoleConnections.forEach((conn) => {
+  BastionBox.ConsoleConnections.forEach((conn) => {
     $('#consoleTableBody').append(`<tr><td>${window.htmlEncode(conn.Name || '')}</td>
       <td>${window.htmlEncode(conn.Host)}</td>
       <td>${conn.Protocol}</td>
@@ -229,7 +229,7 @@ function drawConnectionList () {
 
 function editConnection (connId) {
   resetConnectionModal();
-  const conn = AdminBox.ConsoleConnections.find((c) => c.ID === connId);
+  const conn = BastionBox.ConsoleConnections.find((c) => c.ID === connId);
   $('#consoleConnectionModal').modal('show');
   $('#connModalDelete').show();
   $('#connModalDelete').attr('data-conn-id', connId);
@@ -282,8 +282,8 @@ function list () {
   $.get(
     '/api/list', (data) => {
       if (data.result === 'success') {
-        AdminBox.VPNConfigs = data.configs;
-        AdminBox.ConsoleConnections = data.connections;
+        BastionBox.VPNConfigs = data.configs;
+        BastionBox.ConsoleConnections = data.connections;
         drawConfigList();
         drawConnectionList();
       } else {
@@ -323,7 +323,7 @@ function createVpnConfig () {
   $.post(
     '/api/createvpnconfig', postData, (data) => {
       if (data.result === 'success') {
-        AdminBox.VPNConfigs.push(data.config);
+        BastionBox.VPNConfigs.push(data.config);
         drawConfigList();
       } else {
         window.bootbox.alert('Failed to create new vpn config');
@@ -340,7 +340,7 @@ function revokeVpnConfig (id) {
   $.post(
     '/api/revokevpnconfig', postData, (data) => {
       if (data.result === 'success') {
-        AdminBox.VPNConfigs = AdminBox.VPNConfigs.filter((c) => c.ID !== id);
+        BastionBox.VPNConfigs = BastionBox.VPNConfigs.filter((c) => c.ID !== id);
         drawConfigList();
       } else {
         window.bootbox.alert('Failed to revoke vpn config');
@@ -358,7 +358,7 @@ function deleteConsoleConnection () {
   $.post(
     '/api/deleteconnection', postData, (data) => {
       if (data.result === 'success') {
-        AdminBox.ConsoleConnections = AdminBox.ConsoleConnections.filter((c) => c.ID !== id);
+        BastionBox.ConsoleConnections = BastionBox.ConsoleConnections.filter((c) => c.ID !== id);
         drawConnectionList();
       } else {
         window.bootbox.alert('Failed to delete connection');

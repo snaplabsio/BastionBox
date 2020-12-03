@@ -5,12 +5,12 @@ const axios = require('axios');
 const ip = require('ip-utils');
 
 const CAattrs = [
-  { name: 'commonName', value: 'adminboxCA' },
+  { name: 'commonName', value: 'bastionboxCA' },
   { name: 'countryName', value: 'US' },
   { shortName: 'ST', value: 'CA' },
   { name: 'localityName', value: 'San Francisco' },
-  { name: 'organizationName', value: 'AdminBoxCA' },
-  { shortName: 'OU', value: 'AdminBoxCA' }
+  { name: 'organizationName', value: 'BastionBoxCA' },
+  { shortName: 'OU', value: 'BastionBoxCA' }
 ];
 
 const dhparams = [
@@ -105,8 +105,8 @@ function newCert (publicKey, name, extensions, caPrivateKey) {
     { name: 'countryName', value: 'US' },
     { shortName: 'ST', value: 'CA' },
     { name: 'localityName', value: 'San Francisco' },
-    { name: 'organizationName', value: 'AdminBox' },
-    { shortName: 'OU', value: 'AdminBox' }
+    { name: 'organizationName', value: 'BastionBox' },
+    { shortName: 'OU', value: 'BastionBox' }
   ];
   clientCert.setSubject(attrs);
   clientCert.setIssuer(CAattrs);

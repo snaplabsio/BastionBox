@@ -1,4 +1,4 @@
-# AdminBox
+# BastionBox
 
 A simple bastion host setup designed for cloud-hosted lab environments.
 
@@ -19,13 +19,13 @@ This is currently the only tested/supported OS, though other debian based operat
 1. Clone Repository
 
     ```text
-    git clone https://github.com/snaplabsio/AdminBox
+    git clone https://github.com/snaplabsio/BastionBox
     ```
 
 2. Run Install Script
 
     ```text
-    sudo AdminBox/install.sh
+    sudo BastionBox/install.sh
     ```
 
 ## Usage
@@ -46,11 +46,11 @@ The username and password can be updated in the `API/config.json` file.
 
 ### Routing traffic to clients
 
-If you want to initiate network connections with VPN clients from within your lab environment, you will need to add a route directing the vpn client IP range (default: 172.19.253.0/24) to the AdminBox. This could be required for things such as command and control (C2) callbacks.
+If you want to initiate network connections with VPN clients from within your lab environment, you will need to add a route directing the vpn client IP range (default: 172.19.253.0/24) to the BastionBox. This could be required for things such as command and control (C2) callbacks.
 
 You could do this locally on each system in the lab, but it is likely easier to do it at the router/default gateway level.
 
 In AWS this means:
 
-1. [Disabling the source/destination check](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#modify-source-dest-check) on the AdminBox network interface
-2. [Adding a route](https://docs.aws.amazon.com/vpc/latest/userguide/WorkWithRouteTables.html#AddRemoveRoutes) to the VPC/subnet's route table directing the vpn range to the AdminBox network interface
+1. [Disabling the source/destination check](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#modify-source-dest-check) on the BastionBox network interface
+2. [Adding a route](https://docs.aws.amazon.com/vpc/latest/userguide/WorkWithRouteTables.html#AddRemoveRoutes) to the VPC/subnet's route table directing the vpn range to the BastionBox network interface

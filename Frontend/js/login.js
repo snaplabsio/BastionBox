@@ -24,7 +24,7 @@ function signin () {
   const postData = JSON.stringify(jsonData);
   $.post('/api/login', postData, (data) => {
     if (data.accessToken) {
-      localStorage.setItem('adminBoxAccessToken', data.accessToken);
+      localStorage.setItem('bastionBoxAccessToken', data.accessToken);
       window.location.href = 'main.html';
     } else {
       window.bootbox.alert(`Error: ${data.error}`);
@@ -33,7 +33,7 @@ function signin () {
 }
 
 function checkAuthenticated () {
-  const token = localStorage.getItem('adminBoxAccessToken');
+  const token = localStorage.getItem('bastionBoxAccessToken');
   if (token) {
     try {
       const jwt = window.jwt_decode(token);

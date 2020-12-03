@@ -63,8 +63,8 @@ npm i --production
 pm2 start src
 
 # copy frontend to web dir
-mkdir -p /var/www/html/adminbox
-cp -r $project_root/Frontend/* /var/www/html/adminbox
+mkdir -p /var/www/html/bastionbox
+cp -r $project_root/Frontend/* /var/www/html/bastionbox
 
 # update apache config
 cp $project_root/Resources/apache.conf /etc/apache2/sites-enabled/000-default.conf
