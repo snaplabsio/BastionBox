@@ -25,7 +25,8 @@ This is currently the only tested/supported OS, though other debian based operat
 2. Run Install Script
 
     ```text
-    sudo BastionBox/install.sh
+    chmod +x ./BastionBox/install.sh
+    sudo ./BastionBox/install.sh
     ```
 
 ## Usage
