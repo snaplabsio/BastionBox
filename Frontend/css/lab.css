@@ -85,7 +85,13 @@ body {
 }
 
 .main-wrapper {
-    height: calc(100% - 57px);
+    height: calc(100% - 117px);
+}
+
+.login-form-div {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
 }
 
 .menu-icon {
@@ -200,4 +206,32 @@ body {
     align-items: center;
     margin-bottom: 12px;
     margin-top: 8px;
+}
+
+.footer {
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #f5f5f5;
+    text-align: center;
+  }
+
+.social {
+    color: #646464;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+.social:hover {
+    color: #4d4d4d
+}
+
+.snap {
+    height: 23px;
+    padding-bottom: 3px;
+    opacity: 0.7;
+}
+
+.snap:hover {
+    opacity: 0.8;
 }

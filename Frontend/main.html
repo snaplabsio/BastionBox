@@ -37,12 +37,6 @@
     </div>
     <div>
       <span class="navbar-text mr-2" id="navbarUsername"></span>
-      <!-- <span data-toggle="tooltip" data-placement="bottom" title="User Settings">
-        <button type="button" class="btn btn-default mr-2" data-toggle="modal" data-target="#settingsModal"
-          aria-label="Left Align">
-          <span class="fas fa-cog" aria-hidden="true"></span>
-        </button>
-      </span> -->
       <span data-toggle="tooltip" data-placement="bottom" title="Logout">
         <button type="button" id="logoutBtn" class="btn btn-default" aria-label="Left Align">
           <span class="fas fa-sign-out-alt" aria-hidden="true"></span>
@@ -291,181 +285,15 @@
     </div>
   </div>
 
-
-  <div class="modal" tabindex="-1" role="dialog" id="labNameModal">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit Lab</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="labNameInput">Name</label>
-              <input type="text" class="form-control" id="labNameInput" placeholder="Lab Name">
-            </div>
-            <div class="form-group">
-              <label for="labDescInput">Description</label>
-              <input type="text" class="form-control" id="labDescInput" placeholder="Lab Description">
-            </div>
-
-            <div class="form-group">
-              <label>Auto-Off</label>
-              <div class="ml-3">
-                <div class="custom-control custom-checkbox mb-2">
-                  <input type="checkbox" class="custom-control-input" id="autoOffCheck">
-                  <label class="custom-control-label" for="autoOffCheck">Enabled</label>
-                </div>
-                <div class="form-group row">
-                  <div class="col-auto pr-1">
-                    <input type="number" class="form-control" id="autoOffHours" placeholder="2" min="1" max="168">
-                  </div>
-                  <label class="col-auto col-form-label pl-1" for="autoOffHours">Hours</label>
-                </div>
-              </div>
-            </div>
-
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="changeLabNameBtn" data-dismiss="modal">Save</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        </div>
-      </div>
+  <footer class="footer">
+    <div class="container">
+      <a href="https://twitter.com/snaplabsio" class="btn social"><span class="fab fa-twitter" aria-hidden="true"></span></a>
+      <a href="https://github.com/snaplabsio" class="btn social"><span class="fab fa-github" aria-hidden="true"></span></a>
+      <a href="https://snaplabs.io" class="btn social">
+          <img class="snap" src="images/snap700.png">
+      </a>
     </div>
-  </div>
-
-  <div class="modal" tabindex="-1" role="dialog" id="templateModal">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Template Lab</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="templateNameInput">Name</label>
-              <input type="text" class="form-control" id="templateNameInput" placeholder="Lab Name">
-            </div>
-            <div class="form-group">
-              <label for="templateDescInput">Description</label>
-              <input type="text" class="form-control" id="templateDescInput" placeholder="Lab Description">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="templateModalSubmit" data-dismiss="modal">Template</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="snapshotModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Snapshot Options</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="container">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Date</th>
-                  <th>Revert</th>
-                  <th>Delete</th>
-                </tr>
-              </thead>
-              <tbody id="snap-table-body"></tbody>
-            </table>
-          </div>
-
-          <div class="form-inline" id="new-snap-form">
-            <div class="form-group mx-sm-3 mb-2">
-              <label for="new-snap-name" class="sr-only">Snapshot Name</label>
-              <input type="text" class="form-control" id="new-snap-name" placeholder="Snapshot Name">
-            </div>
-            <button class="btn btn-primary mb-2" id="take-snapshot">Take Snapshot</button>
-          </div>
-          <p class="mx-sm-3 mb-2" id="snapMsg"></p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="settingsModal"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="settingsModal">User Settings</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-
-          <h6 class="font-weight-bold">Multifactor</h6>
-          <hr>
-
-          <div class="btn-group btn-group-toggle">
-            <label class="btn btn-primary btn-sm" id="mfaDisable">Disabled</label>
-            <label class="btn btn-secondary btn-sm" id="mfaEnable">Enabled</label>
-          </div>
-          <p id="qr-message" class="m-3"></p>
-          <div class="m-3" id="qrcode"></div>
-          <form class="form-inline d-none" id="otpConfirmForm">
-            <div class="form-group mx-sm-3 mb-2">
-              <label for="otpConfirm" class="sr-only">Token</label>
-              <input type="text" class="form-control" id="otpConfirm" placeholder="123456">
-            </div>
-            <button type="submit" class="btn btn-primary mb-2">Confirm Token</button>
-          </form>
-          <h6 class="mt-4 font-weight-bold">Change Password</h6>
-          <hr>
-          <p id="password-message" class="m-3"></p>
-          <form id="changePasswdForm">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Current Password</label>
-              <input type="password" class="form-control" id="currentPass" placeholder="Current Password"
-                autocomplete="current-password">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">New Password</label>
-              <input type="password" class="form-control" id="newPass1" placeholder="New Password"
-                autocomplete="new-password">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Confirm New Password</label>
-              <input type="password" class="form-control" id="newPass2" placeholder="New Password"
-                autocomplete="new-password">
-            </div>
-            <button type="submit" class="btn btn-primary">Change Password</button>
-          </form>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  </footer>
 </body>
 
 </html>

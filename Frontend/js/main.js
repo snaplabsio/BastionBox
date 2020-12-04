@@ -8,6 +8,9 @@ $(document).ready(() => {
     beforeSend: (xhr) => {
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.setRequestHeader('Access-Token', BastionBox.token);
+    },
+    error: function (xhr, status, err) {
+      if (xhr.status === 401) { window.location.href = '/index.html'; }
     }
   });
 

@@ -16,6 +16,7 @@
   <link href="https://fonts.googleapis.com/css?family=B612+Mono:400,700|Nunito:400,700" rel="stylesheet">
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link href="fontawesome/css/all.css" rel="stylesheet">
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
@@ -35,9 +36,9 @@
       </span>
     </div>
   </nav>
-  <div style="height: calc(100% - 100px); margin-top:40px; position: relative;">
-    <div style="height: 15%; min-height:50px;"></div>
-    <div class="container text-center">
+  <div class="main-wrapper">
+    <div id="main">
+    <div class="login-form-div container text-center">
       <form id="signinForm" class="form-signin" style="width: 330px;">
         <h3 class="form-signin-heading">Login</h3>
         <label for="usernameInputSignin" class="sr-only">Username</label>
@@ -50,20 +51,18 @@
         <button class="btn btn-lg btn-primary btn-block" id="signInBtn">Sign in</button>
       </form>
 
-      <form id="newPasswdForm" class="form-signin d-none" style="width: 330px;">
-        <h3 class="form-signin-heading">New Password Required</h3>
-        <label for="newPasswordInput" class="sr-only">Password</label>
-        <input type="password" id="newPasswordInput" class="form-control upperField" autocomplete="new-password"
-          placeholder="Password" required>
-        <label for="confirmPasswordInput" class="sr-only">Confirm Password</label>
-        <input type="password" id="confirmPasswordInput" class="form-control lowerField" autocomplete="new-password"
-          placeholder="Confirm Password" required>
-
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Set Password</button>
-      </form>
-
     </div>
   </div>
+  
+  <footer class="footer">
+    <div class="container">
+      <a href="https://twitter.com/snaplabsio" class="btn social"><span class="fab fa-twitter" aria-hidden="true"></span></a>
+      <a href="https://github.com/snaplabsio" class="btn social"><span class="fab fa-github" aria-hidden="true"></span></a>
+      <a href="https://snaplabs.io" class="btn social">
+          <img class="snap" src="images/snap700.png">
+      </a>
+    </div>
+  </footer>
 </body>
 
 </html>
