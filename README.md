@@ -6,13 +6,15 @@ A simple bastion host setup designed for cloud-hosted and on-premises lab enviro
 
 ## AWS AMI
 
-The easiest way to get started is to use our community AMI. Currently, the AMI is only available in US-East-1.  
+The easiest way to get started is to use our community AMI.
 
 ### us-east-1
 
 `ami-0223eaf7dcb180393`
 
-To launch the BastionBox in other AWS regions, you'll need to copy the AMI. This process is explained here: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html#ami-copy-steps. 
+### Other Regions
+
+To launch the BastionBox in other AWS regions, you'll need to [copy the AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html#ami-copy-steps).
 
 ## Installation
 
