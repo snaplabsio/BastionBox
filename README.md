@@ -8,6 +8,8 @@ A simple bastion host setup designed for cloud-hosted and on-premises lab enviro
 
 The easiest way to get started is to use our community AMI.
 
+We recommend a `t2.small` instance for general use.
+
 ### us-east-1
 
 `ami-0223eaf7dcb180393`
