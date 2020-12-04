@@ -33,6 +33,10 @@ This is currently the only tested/supported OS, though other debian based operat
 
 ## Usage
 
+### Web Interface
+
+The BastionBox web interface will be accessible on port 80 after launch or install.
+
 ### Username and Password
 
 The default username is `admin`.
