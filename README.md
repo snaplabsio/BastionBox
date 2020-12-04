@@ -43,6 +43,12 @@ A manual install will prompt for a password.
 
 The username and password can be changed in the `BastionBox/API/config.json` file. Run `pm2 restart 0` or reboot for web API changes to take affect.
 
+### Static IP Address
+
+By default, EC2 instances are assigned dyanmic public IP addresses. In order for VPN configs to work across power on/off cycles, your BastionBox needs a static IP. In AWS, this means [allocating](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-allocating) and [associating](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-associating) an elastic IP address with your instance.
+
+BastionBox will otherwise work fine without a static IP; you'll just need to generate new VPN configs any time the IP address changes.
+
 ### Routing traffic to VPN clients
 
 If you want to initiate network connections with VPN clients from within your lab environment, you will need to add a route directing the vpn client IP range (default: 172.19.253.0/24) to the BastionBox. This could be required for things such as command and control (C2) callbacks.
