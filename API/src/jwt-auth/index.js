@@ -11,7 +11,7 @@ console.log(config);
 const data = fs.readFileSync('../Resources/Guacamole/guacamole.properties');
 const regex = /secret-key:([a-zA-Z0-9]+)/g;
 const result = regex.exec(data);
-const guactoken = result[1];
+const guactoken = result ? result[1] : '';
 
 function encodeToken (tokenData) {
   const jwt = njwt.create(tokenData, guactoken);

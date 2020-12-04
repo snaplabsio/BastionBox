@@ -2,17 +2,10 @@ const http = require('http');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const fs = require('fs');
 const { isAuthenticatedMiddleware, jwtAuthenticationMiddleware, jwtLogin } = require('./jwt-auth');
 const { listConfigsAndConnections } = require('./list');
 const { createVpnConfig, revokeVpnConfig } = require('./vpn');
 const { createConnection, deleteConnection, connect } = require('./guac');
-
-const data = fs.readFileSync('../Resources/Guacamole/guacamole.properties');
-const regex = /secret-key:([a-zA-Z0-9]+)/g;
-const result = regex.exec(data);
-const guactoken = result[1];
-console.log(guactoken);
 
 const app = express();
 app.server = http.createServer(app);
