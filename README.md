@@ -6,7 +6,7 @@ A simple bastion host setup designed for cloud-hosted and on-premises lab enviro
 
 ## AWS AMI
 
-The easiest way to get started is to use our community AMI. 
+The easiest way to get started is to use our community AMI. Currently, the AMI is only available in US-East-1.  
 
 ### us-east-1
 
