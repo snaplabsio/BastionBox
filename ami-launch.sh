@@ -6,7 +6,7 @@ project_root=$(dirname $(realpath $0 ))
 echo $project_root
 
 # get some variables
-password=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
+PASSWORD=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
 sed -i "s/\"password\":.*,/\"password\": \"$PASSWORD\",/" $project_root/API/config.json
 
 # add key to guac properties file

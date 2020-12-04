@@ -161,20 +161,14 @@ async function newVpnSetup () {
 
   let cidr;
   // attempt to get VPC cidr for AWS
-  axios.get('http://169.254.169.254/latest/meta-data/mac', { timeout: 500 })
-    .then((response) => {
-      const mac = response.data;
-      axios.get(`http://169.254.169.254/latest/meta-data/network/interfaces/macs/${mac}/vpc-ipv4-cidr-block`, { timeout: 500 })
-        .then((response) => {
-          cidr = response.data;
-        })
-        .catch(() => {
-          console.log('could not reach AWS metadata');
-        });
-    })
-    .catch(() => {
-      console.log('could not reach AWS metadata');
-    });
+  try {
+    const res1 = await axios.get('http://169.254.169.254/latest/meta-data/mac', { timeout: 500 });
+    const mac = res1.data;
+    const res2 = await axios.get(`http://169.254.169.254/latest/meta-data/network/interfaces/macs/${mac}/vpc-ipv4-cidr-block`, { timeout: 500 });
+    cidr = res2.data;
+  } catch (err) {
+    console.log('could not reach AWS metadata');
+  }
 
   // get subnet cidr from network interface
   if (!cidr) {
